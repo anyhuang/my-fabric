@@ -12,6 +12,6 @@ if (preRelease === 'true') {
 console.log('npm publish ' + args);
 
 // publish the main version (the package is published "above" the -browser version)
-cp.execSync('npm publish ' + args);
+// cp.execSync('npm publish ' + args);
 
 console.log('Main package is published');
