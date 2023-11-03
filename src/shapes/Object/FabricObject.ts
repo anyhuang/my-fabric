@@ -5,6 +5,7 @@ import { applyMixins } from '../../util/applyMixins';
 import type { FabricObjectProps } from './types/FabricObjectProps';
 import type { TFabricObjectProps, SerializedObjectProps } from './types';
 import { classRegistry } from '../../ClassRegistry';
+import { v4 as uuid } from 'uuid';
 
 // TODO somehow we have to make a tree-shakeable import
 
@@ -19,7 +20,9 @@ export class FabricObject<
   Props extends TFabricObjectProps = Partial<FabricObjectProps>,
   SProps extends SerializedObjectProps = SerializedObjectProps,
   EventSpec extends ObjectEvents = ObjectEvents
-> extends InteractiveFabricObject<Props, SProps, EventSpec> {}
+> extends InteractiveFabricObject<Props, SProps, EventSpec> {
+  readonly id: string = uuid();
+}
 
 applyMixins(FabricObject, [FabricObjectSVGExportMixin]);
 
