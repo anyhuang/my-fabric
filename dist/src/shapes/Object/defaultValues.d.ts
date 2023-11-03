@@ -29,7 +29,7 @@ export declare const fabricObjectDefaultValues: {
     readonly cornerDashArray: null;
     readonly centeredScaling: false;
     readonly centeredRotation: true;
-    readonly fill: "rgb(0,0,0)";
+    readonly fill: undefined;
     readonly fillRule: "nonzero";
     readonly globalCompositeOperation: "source-over";
     readonly backgroundColor: "";
@@ -62,8 +62,8 @@ export declare const fabricObjectDefaultValues: {
     readonly lockScalingFlip: false;
     readonly excludeFromExport: false;
     readonly objectCaching: true;
-    readonly noScaleCache: true;
-    readonly strokeUniform: false;
+    readonly noScaleCache: false;
+    readonly strokeUniform: true;
     readonly dirty: true;
     readonly paintFirst: "fill";
     readonly activeOn: "down";

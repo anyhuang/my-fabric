@@ -2,6 +2,7 @@
 
 var jsdom = require('jsdom');
 var utils = require('jsdom/lib/jsdom/living/generated/utils.js');
+var uuid = require('uuid');
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -7014,7 +7015,7 @@ const fabricObjectDefaultValues = {
   cornerDashArray: null,
   centeredScaling: false,
   centeredRotation: true,
-  fill: 'rgb(0,0,0)',
+  fill: undefined,
   fillRule: 'nonzero',
   globalCompositeOperation: 'source-over',
   backgroundColor: '',
@@ -7047,8 +7048,8 @@ const fabricObjectDefaultValues = {
   lockScalingFlip: false,
   excludeFromExport: false,
   objectCaching: true,
-  noScaleCache: true,
-  strokeUniform: false,
+  noScaleCache: false,
+  strokeUniform: true,
   dirty: true,
   paintFirst: 'fill',
   activeOn: 'down',
@@ -9809,7 +9810,12 @@ function applyMixins(derivedCtor, constructors) {
 // TODO somehow we have to make a tree-shakeable import
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars
-class FabricObject extends InteractiveFabricObject {}
+class FabricObject extends InteractiveFabricObject {
+  constructor() {
+    super(...arguments);
+    _defineProperty(this, "id", uuid.v4());
+  }
+}
 applyMixins(FabricObject, [FabricObjectSVGExportMixin]);
 classRegistry.setClass(FabricObject);
 classRegistry.setClass(FabricObject, 'object');
