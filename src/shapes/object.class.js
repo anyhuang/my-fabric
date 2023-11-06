@@ -1,6 +1,7 @@
 (function(global) {
 
   'use strict';
+  var uuid = require('uuid').v4;
 
   var fabric = global.fabric || (global.fabric = { }),
       extend = fabric.util.object.extend,
@@ -51,7 +52,6 @@
    * @fires drop
    */
   fabric.Object = fabric.util.createClass(fabric.CommonMethods, /** @lends fabric.Object.prototype */ {
-
     /**
      * Type of an object (rect, circle, path, etc.).
      * Note that this property is meant to be read-only and not meant to be modified.
@@ -632,6 +632,7 @@
      * @default false
      */
     inverted: false,
+    id: uuid(),
 
     /**
      * Meaningful ONLY when the object is used as clipPath.
