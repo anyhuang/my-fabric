@@ -1,7 +1,7 @@
 (function(global) {
 
   'use strict';
-  var uuid = require('uuid').v4;
+  var uuidv4 = require('uuid').v4;
 
   var fabric = global.fabric || (global.fabric = { }),
       extend = fabric.util.object.extend,
@@ -632,7 +632,7 @@
      * @default false
      */
     inverted: false,
-    id: uuid(),
+    uuid: uuidv4(),
 
     /**
      * Meaningful ONLY when the object is used as clipPath.
