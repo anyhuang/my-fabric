@@ -103,11 +103,19 @@ fabric.Collection = {
    * Type parameter introduced in 1.3.10
    * since 2.3.5 this method return always a COPY of the array;
    * @param {String} [type] When specified, only objects of this type are returned
+   * @param {Boolean} [guide] When guide is true, exclude guide type object
    * @return {Array}
    */
-  getObjects: function(type) {
+  getObjects: function(type, guide) {
     if (typeof type === 'undefined') {
-      return this._objects.concat();
+      if (guide) {
+        return this._objects.concat().filter(function(item) {
+          return item.type !== 'Workspace' && item.type !== 'Guideline';
+        });
+      }
+      else {
+        return this._objects.concat();
+      }
     }
     return this._objects.filter(function(o) {
       return o.type === type;
